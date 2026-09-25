@@ -1,3 +1,6 @@
-export default function Home() {
-  return <>123</>;
+import { redirect } from 'next/navigation';
+import { ROUTES } from '@/shared/config';
+
+export default function RootPage() {
+  redirect(ROUTES.boards);
 }

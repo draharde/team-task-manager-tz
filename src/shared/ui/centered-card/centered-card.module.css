@@ -1,0 +1,12 @@
+.page {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  padding: 16px;
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+}

@@ -1,0 +1,7 @@
+@layer utilities {
+  .container {
+    background-color: var(--color-surface);
+    border-radius: var(--container-border-radius);
+    box-shadow: var(--container-box-shadow);
+  }
+}
