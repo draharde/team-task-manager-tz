@@ -27,3 +27,6 @@ export const toPublicUser = (user: DbUser): User => ({
 
 export const unauthorized = () =>
   HttpResponse.json({ message: 'Требуется авторизация' }, { status: HTTP_STATUS.UNAUTHORIZED });
+
+export const notFound = (message: string) =>
+  HttpResponse.json({ message }, { status: HTTP_STATUS.NOT_FOUND });
