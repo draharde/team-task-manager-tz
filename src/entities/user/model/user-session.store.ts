@@ -10,7 +10,7 @@ interface SessionState {
   user: User | null;
   setSession: (token: string, user: User) => void;
   setUser: (user: User) => void;
-  clear: () => void;
+  clear: VoidFunction;
 }
 
 export const useUserSessionStore = create<SessionState>()(

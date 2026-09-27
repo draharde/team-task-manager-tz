@@ -5,3 +5,5 @@ export * from './full-page-spinner';
 export * from './centered-card';
 export * from './empty';
 export * from './loader';
+export * from './modal';
+export * from './modal-delete-confirm';

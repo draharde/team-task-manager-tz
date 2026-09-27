@@ -2,7 +2,7 @@ import type { ComponentProps } from 'react';
 import { cn } from '@/shared/lib';
 import styles from './button.module.css';
 
-type ButtonVariant = 'primary' | 'secondary';
+type ButtonVariant = 'primary' | 'secondary' | 'danger';
 
 interface ButtonProps extends ComponentProps<'button'> {
   variant?: ButtonVariant;

@@ -3,36 +3,27 @@
 import type { Board } from '@/entities/board';
 import { useState } from 'react';
 import { useBoardDelete } from '../../api/board-delete.hook';
-import { Button } from '@/shared/ui';
+import { Button, ModalDeleteConfirm } from '@/shared/ui';
 import styles from './delete-board-button.module.css';
 
 export function DeleteBoardButton({ id }: Pick<Board, 'id'>) {
   const [isConfirm, setIsConfirm] = useState(false);
   const { mutate: deleteBoard, isPending } = useBoardDelete();
 
-  if (!isConfirm) {
-    return (
-      <Button variant="secondary" onClick={() => setIsConfirm(true)}>
-        Удалить
-      </Button>
-    );
-  }
-
-  // TODO: нужно через модалку сделать !
+  const handleDeleteBoard = () => deleteBoard(id, { onSuccess: () => setIsConfirm(false) });
 
   return (
     <div className={styles.confirm}>
-      <p className={styles.question}>Удалить доску?</p>
+      <Button variant="secondary" onClick={() => setIsConfirm(true)} disabled={isPending}>
+        Удалить
+      </Button>
 
-      <div className={styles.actions}>
-        <Button onClick={() => deleteBoard(id)} disabled={isPending}>
-          ok
-        </Button>
-
-        <Button variant="secondary" onClick={() => setIsConfirm(false)} disabled={isPending}>
-          not ok
-        </Button>
-      </div>
+      <ModalDeleteConfirm
+        isPending={isPending}
+        isOpen={isConfirm}
+        onCancel={() => setIsConfirm(false)}
+        onConfirm={handleDeleteBoard}
+      />
     </div>
   );
 }

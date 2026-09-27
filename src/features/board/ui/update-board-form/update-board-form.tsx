@@ -10,7 +10,7 @@ import { Button, FormItem, Input } from '@/shared/ui';
 
 interface UpdateBoardFormProps {
   board: Board;
-  onClose: () => void;
+  onClose: VoidFunction;
 }
 
 export function UpdateBoardForm({ board, onClose }: UpdateBoardFormProps) {

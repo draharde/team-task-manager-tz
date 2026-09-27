@@ -7,20 +7,18 @@
 }
 
 .title {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
   color: var(--color-text);
   font-size: 18px;
   font-weight: 600;
-  text-decoration: none;
-  overflow-wrap: anywhere;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .title:hover {
   color: var(--color-primary);
-}
-
-.title:focus-visible {
-  outline: var(--focus-outline);
-  outline-offset: 2px;
 }
 
 .date {
@@ -31,8 +29,6 @@
 
 .actions {
   display: flex;
-  flex-wrap: wrap;
   gap: 8px;
-  margin-top: auto;
   padding-top: 8px;
 }
