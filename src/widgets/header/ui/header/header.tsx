@@ -5,6 +5,7 @@ import { UserAvatar, useUserSessionStore } from '@/entities/user';
 import { LogoutButton } from '@/features/auth';
 import { ROUTES } from '@/shared/config';
 import styles from './header.module.css';
+import { ThemeSwitch } from '@/features/theme';
 
 export function Header() {
   const user = useUserSessionStore((state) => state.user);
@@ -16,13 +17,14 @@ export function Header() {
       </Link>
 
       <div className={styles.actions}>
+        <ThemeSwitch />
+
         {user && (
           <Link href={ROUTES.profile} className={styles.profile} aria-label="Профиль">
             <UserAvatar name={user.name} avatarUrl={user.avatarUrl} />
             <span className={styles.userName}>{user.name}</span>
           </Link>
         )}
-
         <LogoutButton />
       </div>
     </header>
