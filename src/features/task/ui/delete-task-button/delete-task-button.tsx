@@ -28,7 +28,7 @@ export function DeleteTaskButton({ task, onDeleted }: DeleteTaskButtonProps) {
   }
 
   return (
-    <div className={styles.confirm} role="group" aria-label={`Удаление задачи «${task.title}»`}>
+    <div className={styles.confirm}>
       <p className={styles.question}>Удалить задачу ?</p>
 
       <div className={styles.actions}>

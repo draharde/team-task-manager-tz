@@ -15,11 +15,7 @@ export function BoardPage({ boardId }: { boardId: string }) {
         ← Все доски
       </Link>
 
-      {isPending && (
-        <p className={styles.status} role="status">
-          Загружаем доску…
-        </p>
-      )}
+      {isPending && <p className={styles.status}>Загружаем доску…</p>}
 
       {board && (
         <>
