@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useUserSessionStore } from '@/entities/user';
+import { UserAvatar, useUserSessionStore } from '@/entities/user';
 import { LogoutButton } from '@/features/auth';
 import { ROUTES } from '@/shared/config';
 import styles from './header.module.css';
@@ -16,7 +16,12 @@ export function Header() {
       </Link>
 
       <div className={styles.actions}>
-        <span className={styles.userName}>{user?.name}</span>
+        {user && (
+          <Link href={ROUTES.profile} className={styles.profile} aria-label="Профиль">
+            <UserAvatar name={user.name} avatarUrl={user.avatarUrl} />
+            <span className={styles.userName}>{user.name}</span>
+          </Link>
+        )}
 
         <LogoutButton />
       </div>

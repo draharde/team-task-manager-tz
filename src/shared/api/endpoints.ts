@@ -4,6 +4,7 @@ export const API_ENDPOINTS = {
     register: '/auth/register',
   },
   users: '/users',
+  currentUser: '/users/me',
   boards: {
     list: '/boards',
     byId: (boardId: string) => `/boards/${boardId}`,

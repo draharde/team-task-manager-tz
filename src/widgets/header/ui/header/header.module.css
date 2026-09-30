@@ -20,6 +20,26 @@
   gap: 12px;
 }
 
-.userName {
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--control-border-radius);
   color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.profile:hover {
+  color: var(--color-text);
+}
+
+.profile:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .userName {
+    display: none;
+  }
 }
