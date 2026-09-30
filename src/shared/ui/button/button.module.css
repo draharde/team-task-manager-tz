@@ -27,3 +27,8 @@
   border-color: var(--color-border);
   color: var(--color-text);
 }
+
+.danger {
+  background-color: var(--color-danger);
+  color: #fff;
+}

@@ -1,0 +1,20 @@
+.textarea {
+  width: 100%;
+  min-height: 96px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--control-border-radius);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  resize: vertical;
+}
+
+.textarea:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 1px;
+}
+
+.textarea[aria-invalid='true'] {
+  border-color: var(--color-danger);
+}

@@ -5,7 +5,7 @@ import { HTTP_STATUS } from './http-status';
 
 interface ApiOptions {
   getToken: () => string | null;
-  onUnauthorized: () => void;
+  onUnauthorized: VoidFunction;
 }
 
 export const api = axios.create({ baseURL: API_URL });

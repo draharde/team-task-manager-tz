@@ -1,0 +1,26 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 16px;
+}
+
+.back {
+  align-self: flex-start;
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.back:hover {
+  color: var(--color-primary);
+}
+
+.title {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.status {
+  margin: 0;
+  color: var(--color-text-muted);
+}
