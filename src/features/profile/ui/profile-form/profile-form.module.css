@@ -1,0 +1,64 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.avatarRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatarActions {
+  display: flex;
+  flex: 1;
+  min-width: 200px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.upload {
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--control-border-radius);
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.upload:has(+ .fileInput:focus-visible) {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+.hint {
+  width: 100%;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.saved {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
