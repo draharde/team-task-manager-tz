@@ -4,3 +4,8 @@ export interface User {
   name: string;
   avatarUrl?: string;
 }
+
+export interface UpdateUserDto {
+  name: string;
+  avatarUrl: string | null;
+}
