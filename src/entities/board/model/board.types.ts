@@ -4,3 +4,7 @@ export interface Board {
   ownerId: string;
   createdAt: string;
 }
+
+export interface CreateUpdateBoardDto {
+  title: string;
+}

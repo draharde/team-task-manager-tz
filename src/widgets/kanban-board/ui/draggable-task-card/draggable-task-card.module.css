@@ -1,0 +1,18 @@
+.item {
+  border-radius: var(--control-border-radius);
+  cursor: grab;
+  touch-action: manipulation;
+}
+
+.item:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+.item:hover > * {
+  border-color: var(--color-primary);
+}
+
+.dragging {
+  opacity: 0.4;
+}

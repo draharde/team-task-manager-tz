@@ -53,6 +53,7 @@ export function LoginForm() {
       <p className={styles.hint}>
         Демо-аккаунт: {DEMO_ACCOUNT.email} / {DEMO_ACCOUNT.password}
       </p>
+
       <p className={styles.hint}>
         Нет аккаунта? <Link href={ROUTES.register}>Зарегистрироваться</Link>
       </p>

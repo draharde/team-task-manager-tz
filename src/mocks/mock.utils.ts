@@ -27,3 +27,14 @@ export const toPublicUser = (user: DbUser): User => ({
 
 export const unauthorized = () =>
   HttpResponse.json({ message: 'Требуется авторизация' }, { status: HTTP_STATUS.UNAUTHORIZED });
+
+export const notFound = (message: string) =>
+  HttpResponse.json({ message }, { status: HTTP_STATUS.NOT_FOUND });
+
+export const findOwnBoard = (boardId: string, userId: string) =>
+  db.get().boards.find((board) => board.id === boardId && board.ownerId === userId);
+
+export const findOwnTask = (taskId: string, userId: string) => {
+  const task = db.get().tasks.find(({ id }) => id === taskId);
+  return task && findOwnBoard(task.boardId, userId) ? task : undefined;
+};
