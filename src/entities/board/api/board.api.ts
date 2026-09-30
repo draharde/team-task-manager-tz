@@ -9,4 +9,6 @@ export const boardApi = {
     api.patch<Board>(API_ENDPOINTS.boards.byId(boardId), dto).then((res) => res.data),
   remove: (boardId: string) =>
     api.delete<void>(API_ENDPOINTS.boards.byId(boardId)).then((res) => res.data),
+  getById: (boardId: string) =>
+    api.get<Board>(API_ENDPOINTS.boards.byId(boardId)).then((response) => response.data),
 };

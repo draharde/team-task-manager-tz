@@ -19,6 +19,7 @@ export function DeleteBoardButton({ id }: Pick<Board, 'id'>) {
       </Button>
 
       <ModalDeleteConfirm
+        title="Удаление доски"
         isPending={isPending}
         isOpen={isConfirm}
         onCancel={() => setIsConfirm(false)}

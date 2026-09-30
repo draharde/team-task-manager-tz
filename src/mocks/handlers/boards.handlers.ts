@@ -3,7 +3,7 @@ import type { Board, CreateUpdateBoardDto } from '@/entities/board';
 import { API_ENDPOINTS, HTTP_STATUS } from '@/shared/api';
 import { SHORT_DELAY_MS } from '../mock.constants';
 import { db } from '../mock.db';
-import { getAuthUser, notFound, unauthorized, url } from '../mock.utils';
+import { findOwnBoard, getAuthUser, notFound, unauthorized, url } from '../mock.utils';
 
 interface BoardParams {
   boardId: string;
@@ -11,9 +11,6 @@ interface BoardParams {
 
 const BOARD_BY_ID_PATH = url(API_ENDPOINTS.boards.byId(':boardId'));
 const BOARD_NOT_FOUND_MESSAGE = 'Доска не найдена';
-
-const findOwnBoard = (boardId: string, userId: string) =>
-  db.get().boards.find((board) => board.id === boardId && board.ownerId === userId);
 
 const byNewest = (a: Board, b: Board) => b.createdAt.localeCompare(a.createdAt);
 
@@ -46,6 +43,15 @@ export const boardHandlers = [
       draft.boards.push(board);
     });
     return HttpResponse.json(board, { status: HTTP_STATUS.CREATED });
+  }),
+
+  http.get<BoardParams>(BOARD_BY_ID_PATH, async ({ request, params }) => {
+    await delay(SHORT_DELAY_MS);
+    const user = getAuthUser(request);
+    if (!user) return unauthorized();
+
+    const board = findOwnBoard(params.boardId, user.id);
+    return board ? HttpResponse.json(board) : notFound(BOARD_NOT_FOUND_MESSAGE);
   }),
 
   http.patch<BoardParams, CreateUpdateBoardDto>(BOARD_BY_ID_PATH, async ({ request, params }) => {

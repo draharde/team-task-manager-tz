@@ -2,6 +2,16 @@ import type { Board } from '@/entities/board';
 import type { Task } from '@/entities/task';
 import { DEMO_ACCOUNT } from '@/features/auth';
 import type { Db, DbUser } from './mock.db';
+import { toDateInputValue } from '@/shared/lib';
+import { DAY_MS } from './mock.constants';
+
+const DEADLINE_OFFSET_DAYS = {
+  overdue: -2,
+  soon: 3,
+  later: 10,
+};
+
+const daysFromNow = (days: number) => toDateInputValue(new Date(Date.now() + days * DAY_MS));
 
 export function createSeed(): Db {
   const now = new Date().toISOString();
@@ -32,7 +42,6 @@ export function createSeed(): Db {
     deadline: null,
     assigneeId: null,
     authorId: demo.id,
-    order: 0,
     createdAt: now,
     updatedAt: now,
     ...extra,
@@ -42,11 +51,24 @@ export function createSeed(): Db {
     users: [demo, anna],
     boards: [board],
     tasks: [
-      task('Добавить фильтры', 'todo', 'low', { order: 0, authorId: anna.id, assigneeId: demo.id }),
-      task('Страница профиля', 'todo', 'medium', { order: 1, tags: ['ui'] }),
-      task('Тёмная тема', 'todo', 'low', { order: 2, tags: ['ui'] }),
-      task('Сверстать канбан', 'in_progress', 'medium', { assigneeId: anna.id, tags: ['ui'] }),
-      task('Настроить проект', 'done', 'high', { tags: ['setup'] }),
+      task('Добавить фильтры', 'todo', 'high', {
+        description: 'Поиск по названию, фильтры по автору, приоритету и тегам.',
+        authorId: anna.id,
+        assigneeId: demo.id,
+        tags: ['frontend'],
+        deadline: daysFromNow(DEADLINE_OFFSET_DAYS.soon),
+      }),
+      task('Страница профиля', 'todo', 'medium', {
+        tags: ['frontend', 'ui'],
+        deadline: daysFromNow(DEADLINE_OFFSET_DAYS.later),
+      }),
+      task('Тёмная тема', 'todo', 'low', { tags: ['ui'] }),
+      task('Сверстать канбан', 'in_progress', 'high', {
+        assigneeId: anna.id,
+        tags: ['ui'],
+        deadline: daysFromNow(DEADLINE_OFFSET_DAYS.overdue),
+      }),
+      task('Настроить проект', 'done', 'medium', { tags: ['setup'], assigneeId: demo.id }),
     ],
   };
 }

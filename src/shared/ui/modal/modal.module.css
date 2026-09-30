@@ -17,7 +17,6 @@
 .modal {
   position: relative;
   width: fit-content;
-  padding: 24px;
   background: #fff;
   border-radius: 12px;
   transform: scale(0.9) translateY(20px);
@@ -29,16 +28,48 @@
   visibility: visible;
 }
 
-.open .modal {
+.open.modal {
   transform: scale(1) translateY(0);
 }
 
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
 .close {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  border: none;
-  background: none;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--control-border-radius);
+  background: transparent;
+  color: var(--color-text-muted);
   font-size: 24px;
+  line-height: 1;
   cursor: pointer;
+}
+
+.close:hover {
+  color: var(--color-text);
+}
+
+.close:focus-visible {
+  outline: var(--focus-outline);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 16px;
+  }
 }

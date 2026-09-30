@@ -28,7 +28,7 @@ export function FormItem({ label, error, children }: FormItemProps) {
         'aria-describedby': error ? errorId : undefined,
       })}
       {error && (
-        <p id={errorId} role="alert" className={styles.error}>
+        <p id={errorId} className={styles.error}>
           {error}
         </p>
       )}
