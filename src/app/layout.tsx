@@ -8,8 +8,7 @@ import '@/shared/styles/utilities.css';
 import { THEME_INIT_SCRIPT } from '@/features/theme';
 
 export const metadata: Metadata = {
-  title: 'Team Task Manager',
-  description: 'tz',
+  title: 'TTM',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

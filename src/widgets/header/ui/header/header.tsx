@@ -13,7 +13,7 @@ export function Header() {
   return (
     <header className={styles.header}>
       <Link href={ROUTES.boards} className={styles.logo}>
-        Team Task Manager
+        TTM
       </Link>
 
       <div className={styles.actions}>
