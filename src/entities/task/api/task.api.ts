@@ -1,5 +1,5 @@
-import { api, API_ENDPOINTS } from '@/shared/api';
-import type { CreateTaskDto, MoveTaskDto, Task, UpdateTaskDto } from '../model/task.types';
+import { api, API_ENDPOINTS } from '@/shared/api'
+import type { CreateTaskDto, MoveTaskDto, Task, UpdateTaskDto } from '../model/task.types'
 
 export const taskApi = {
   getByBoard: (boardId: string) =>
@@ -11,4 +11,4 @@ export const taskApi = {
   move: (taskId: string, dto: MoveTaskDto) =>
     api.patch<Task>(API_ENDPOINTS.tasks.move(taskId), dto).then((res) => res.data),
   remove: (taskId: string) => api.delete<void>(API_ENDPOINTS.tasks.byId(taskId)),
-};
+}

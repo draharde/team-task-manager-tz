@@ -1,20 +1,25 @@
-import Image from 'next/image';
-import { cn } from '@/shared/lib';
-import styles from './user-avatar.module.css';
+import Image from 'next/image'
+import { cn } from '@/shared/lib'
+import styles from './user-avatar.module.css'
 
 const AVATAR_SIZE_PX = {
   small: 32,
   large: 96,
-};
+}
 
-const INITIALS_LENGTH = 2;
+const INITIALS_LENGTH = 2
 
-type UserAvatarSize = keyof typeof AVATAR_SIZE_PX;
+const SIZE_CLASSES = {
+  small: styles.small,
+  large: styles.large,
+}
+
+type UserAvatarSize = keyof typeof AVATAR_SIZE_PX
 
 interface UserAvatarProps {
-  name: string;
-  avatarUrl?: string | null;
-  size?: UserAvatarSize;
+  name: string
+  avatarUrl?: string | null
+  size?: UserAvatarSize
 }
 
 const getInitials = (name: string) =>
@@ -23,7 +28,7 @@ const getInitials = (name: string) =>
     .filter(Boolean)
     .slice(0, INITIALS_LENGTH)
     .map((word) => word[0].toUpperCase())
-    .join('');
+    .join('')
 
 export function UserAvatar({ name, avatarUrl, size = 'small' }: UserAvatarProps) {
   if (avatarUrl) {
@@ -33,13 +38,13 @@ export function UserAvatar({ name, avatarUrl, size = 'small' }: UserAvatarProps)
         alt={name}
         width={AVATAR_SIZE_PX[size]}
         height={AVATAR_SIZE_PX[size]}
-        className={cn(styles.avatar, styles[size])}
+        className={cn(styles.avatar, SIZE_CLASSES[size])}
         unoptimized
       />
-    );
+    )
   }
 
   return (
     <span className={cn(styles.avatar, styles.initials, styles[size])}>{getInitials(name)}</span>
-  );
+  )
 }

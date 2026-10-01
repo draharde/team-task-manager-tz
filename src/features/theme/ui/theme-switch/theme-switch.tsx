@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
-import { useThemeStore } from '../../model/theme.store';
-import styles from './theme-switch.module.css';
+import { useThemeStore } from '../../model/theme.store'
+import styles from './theme-switch.module.css'
 
 export function ThemeSwitch() {
-  const theme = useThemeStore((state) => state.theme);
-  const setTheme = useThemeStore((state) => state.setTheme);
+  const theme = useThemeStore((state) => state.theme)
+  const setTheme = useThemeStore((state) => state.setTheme)
 
   return (
     <label className={styles.switch}>
@@ -43,5 +43,5 @@ export function ThemeSwitch() {
         </span>
       </span>
     </label>
-  );
+  )
 }

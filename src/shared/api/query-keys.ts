@@ -3,4 +3,4 @@ export const QUERY_KEYS = {
   boards: ['boards'],
   board: (boardId: string) => ['boards', boardId],
   tasks: (boardId: string) => ['boards', boardId, 'tasks'],
-} as const;
+} as const

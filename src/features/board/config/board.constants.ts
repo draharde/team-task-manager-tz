@@ -1,1 +1,1 @@
-export const BOARD_TITLE_MAX_LENGTH = 50;
+export const BOARD_TITLE_MAX_LENGTH = 50

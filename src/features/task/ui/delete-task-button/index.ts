@@ -1,1 +1,1 @@
-export * from './delete-task-button';
+export * from './delete-task-button'

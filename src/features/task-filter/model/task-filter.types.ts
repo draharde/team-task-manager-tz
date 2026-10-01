@@ -1,8 +1,8 @@
-import type { TaskPriority } from '@/entities/task';
+import type { TaskPriority } from '@/entities/task'
 
 export interface TaskFilters {
-  search: string;
-  authorId: string;
-  priority: TaskPriority | '';
-  tags: string[];
+  search: string
+  authorId: string
+  priority: TaskPriority | ''
+  tags: string[]
 }

@@ -1,18 +1,18 @@
-'use client';
+'use client'
 
-import { useDraggable } from '@dnd-kit/core';
-import { TaskCard, type Task } from '@/entities/task';
-import { cn } from '@/shared/lib';
-import styles from './draggable-task-card.module.css';
+import { useDraggable } from '@dnd-kit/core'
+import { TaskCard, type Task } from '@/entities/task'
+import { cn } from '@/shared/lib'
+import styles from './draggable-task-card.module.css'
 
 interface DraggableTaskCardProps {
-  task: Task;
-  assigneeName?: string;
-  onOpen: (taskId: Task['id']) => void;
+  task: Task
+  assigneeName?: string
+  onOpen: (taskId: Task['id']) => void
 }
 
 export function DraggableTaskCard({ task, assigneeName, onOpen }: DraggableTaskCardProps) {
-  const { attributes, listeners, setNodeRef, isDragging } = useDraggable({ id: task.id });
+  const { attributes, listeners, setNodeRef, isDragging } = useDraggable({ id: task.id })
 
   return (
     <div
@@ -24,5 +24,5 @@ export function DraggableTaskCard({ task, assigneeName, onOpen }: DraggableTaskC
     >
       <TaskCard task={task} assigneeName={assigneeName} />
     </div>
-  );
+  )
 }

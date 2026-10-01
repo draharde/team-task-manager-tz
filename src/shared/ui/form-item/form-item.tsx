@@ -1,21 +1,21 @@
-import { useId, type ReactNode } from 'react';
-import styles from './form-item.module.css';
+import { useId, type ReactNode } from 'react'
+import styles from './form-item.module.css'
 
 export interface FormItemControlProps {
-  id: string;
-  'aria-invalid': boolean;
-  'aria-describedby': string | undefined;
+  id: string
+  'aria-invalid': boolean
+  'aria-describedby': string | undefined
 }
 
 interface FormItemProps {
-  label: string;
-  error?: string;
-  children: (control: FormItemControlProps) => ReactNode;
+  label: string
+  error?: string
+  children: (control: FormItemControlProps) => ReactNode
 }
 
 export function FormItem({ label, error, children }: FormItemProps) {
-  const id = useId();
-  const errorId = `${id}-error`;
+  const id = useId()
+  const errorId = `${id}-error`
 
   return (
     <div className={styles.item}>
@@ -33,5 +33,5 @@ export function FormItem({ label, error, children }: FormItemProps) {
         </p>
       )}
     </div>
-  );
+  )
 }

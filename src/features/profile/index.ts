@@ -1,1 +1,1 @@
-export * from './ui/profile-form';
+export * from './ui/profile-form'

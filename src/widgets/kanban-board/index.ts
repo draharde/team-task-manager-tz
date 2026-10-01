@@ -1,1 +1,1 @@
-export * from './ui/kanban-board';
+export * from './ui/kanban-board'

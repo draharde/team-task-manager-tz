@@ -1,27 +1,27 @@
-'use client';
+'use client'
 
-import { useEffect, type ReactNode } from 'react';
-import { cn } from '@/shared/lib';
-import styles from './modal.module.css';
+import { useEffect, type ReactNode } from 'react'
+import { cn } from '@/shared/lib'
+import styles from './modal.module.css'
 
 interface ModalProps {
-  children: ReactNode;
-  isOpen: boolean;
-  title?: string;
-  onClose: VoidFunction;
+  children: ReactNode
+  isOpen: boolean
+  title?: string
+  onClose: VoidFunction
 }
 
 export function Modal({ isOpen, onClose, children, title }: ModalProps) {
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) return
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
 
     return () => {
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [isOpen]);
+      document.body.style.overflow = previousOverflow
+    }
+  }, [isOpen])
 
   return (
     <div className={cn(styles.overlay, isOpen && styles.open)} onClick={onClose}>
@@ -39,5 +39,5 @@ export function Modal({ isOpen, onClose, children, title }: ModalProps) {
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -1,1 +1,1 @@
-export * from './full-page-spinner';
+export * from './full-page-spinner'

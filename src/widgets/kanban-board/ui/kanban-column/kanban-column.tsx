@@ -1,19 +1,19 @@
-'use client';
+'use client'
 
-import { useDroppable } from '@dnd-kit/core';
-import { TASK_STATUS_LABELS, type Task, type TaskStatus } from '@/entities/task';
-import { cn } from '@/shared/lib';
-import { Button } from '@/shared/ui';
-import { getAssigneeName } from '../../lib/kanban.lib';
-import { DraggableTaskCard } from '../draggable-task-card';
-import styles from './kanban-column.module.css';
+import { useDroppable } from '@dnd-kit/core'
+import { TASK_STATUS_LABELS, type Task, type TaskStatus } from '@/entities/task'
+import { cn } from '@/shared/lib'
+import { Button } from '@/shared/ui'
+import { getAssigneeName } from '../../lib/kanban.lib'
+import { DraggableTaskCard } from '../draggable-task-card'
+import styles from './kanban-column.module.css'
 
 interface KanbanColumnProps {
-  status: TaskStatus;
-  tasks: Task[];
-  userNamesById: Map<string, string>;
-  onAddTask: (status: TaskStatus) => void;
-  onOpenTask: (taskId: Task['id']) => void;
+  status: TaskStatus
+  tasks: Task[]
+  userNamesById: Map<string, string>
+  onAddTask: (status: TaskStatus) => void
+  onOpenTask: (taskId: Task['id']) => void
 }
 
 export function KanbanColumn({
@@ -23,7 +23,7 @@ export function KanbanColumn({
   onAddTask,
   onOpenTask,
 }: KanbanColumnProps) {
-  const { setNodeRef, isOver } = useDroppable({ id: status });
+  const { setNodeRef, isOver } = useDroppable({ id: status })
 
   return (
     <div className={styles.column}>
@@ -34,7 +34,7 @@ export function KanbanColumn({
 
       <ul ref={setNodeRef} className={cn(styles.list, isOver && styles.over)}>
         {tasks.map((task) => (
-          <li key={task.id}>
+          <li key={`kanban-column-task-key-${task.id}`}>
             <DraggableTaskCard
               task={task}
               assigneeName={getAssigneeName(task, userNamesById)}
@@ -48,5 +48,5 @@ export function KanbanColumn({
         + Добавить задачу
       </Button>
     </div>
-  );
+  )
 }

@@ -1,6 +1,6 @@
-import { TASK_STATUSES, type CreateTaskDto, type Task, type TaskStatus } from '@/entities/task';
-import { TASK_DEFAULT_PRIORITY, TASK_TAGS_SEPARATOR } from '../config/task.constants';
-import type { TaskFormValues } from '../model/task.schema';
+import { TASK_STATUSES, type CreateTaskDto, type Task, type TaskStatus } from '@/entities/task'
+import { TASK_DEFAULT_PRIORITY, TASK_TAGS_SEPARATOR } from '../config/task.constants'
+import type { TaskFormValues } from '../model/task.schema'
 
 export const parseTags = (value: string) => [
   ...new Set(
@@ -9,7 +9,7 @@ export const parseTags = (value: string) => [
       .map((tag) => tag.trim())
       .filter(Boolean),
   ),
-];
+]
 
 export const toTaskFormValues = (
   task: Task | null,
@@ -33,7 +33,7 @@ export const toTaskFormValues = (
         deadline: '',
         assigneeId: '',
         tags: '',
-      };
+      }
 
 export const toTaskDto = (values: TaskFormValues): CreateTaskDto => ({
   title: values.title,
@@ -43,4 +43,4 @@ export const toTaskDto = (values: TaskFormValues): CreateTaskDto => ({
   tags: parseTags(values.tags),
   deadline: values.deadline || null,
   assigneeId: values.assigneeId || null,
-});
+})
