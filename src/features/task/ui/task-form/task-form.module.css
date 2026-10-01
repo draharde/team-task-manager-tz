@@ -17,9 +17,9 @@
   gap: 8px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 660px) {
   .form {
-    max-width: none;
+    min-width: 0;
   }
 }
 
