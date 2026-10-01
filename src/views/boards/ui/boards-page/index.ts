@@ -1,1 +1,1 @@
-export * from './boards-page';
+export * from './boards-page'

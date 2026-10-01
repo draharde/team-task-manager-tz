@@ -14,4 +14,4 @@ export const API_ENDPOINTS = {
     byId: (taskId: string) => `/tasks/${taskId}`,
     move: (taskId: string) => `/tasks/${taskId}/move`,
   },
-} as const;
+} as const

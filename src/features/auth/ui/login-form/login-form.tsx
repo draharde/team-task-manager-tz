@@ -1,14 +1,13 @@
-'use client';
+'use client'
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import Link from 'next/link';
-import { useForm } from 'react-hook-form';
-import { ROUTES } from '@/shared/config';
-import { Button, FormItem, Input } from '@/shared/ui';
-import { useAuthLogin } from '../../api/auth-login.hook';
-import { DEMO_ACCOUNT } from '../../config/auth.constants';
-import { loginSchema, type LoginFormValues } from '../../model/auth.schema';
-import styles from './login-form.module.css';
+import { zodResolver } from '@hookform/resolvers/zod'
+import Link from 'next/link'
+import { useForm } from 'react-hook-form'
+import { ROUTES } from '@/shared/config'
+import { Button, FormItem, Input } from '@/shared/ui'
+import { useAuthLogin } from '../../api/auth-login.hook'
+import { loginSchema, type LoginFormValues } from '../../model/auth.schema'
+import styles from './login-form.module.css'
 
 export function LoginForm() {
   const {
@@ -18,12 +17,8 @@ export function LoginForm() {
   } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: { email: '', password: '' },
-  });
-  const { mutate: login, isPending, error } = useAuthLogin();
-
-  // TODO: удалить!
-  // eslint-disable-next-line no-console
-  console.log(error);
+  })
+  const { mutate: login, isPending } = useAuthLogin()
 
   return (
     <form className={styles.form} onSubmit={handleSubmit((values) => login(values))} noValidate>
@@ -51,12 +46,8 @@ export function LoginForm() {
       </Button>
 
       <p className={styles.hint}>
-        Демо-аккаунт: {DEMO_ACCOUNT.email} / {DEMO_ACCOUNT.password}
-      </p>
-
-      <p className={styles.hint}>
         Нет аккаунта? <Link href={ROUTES.register}>Зарегистрироваться</Link>
       </p>
     </form>
-  );
+  )
 }

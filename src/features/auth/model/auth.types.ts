@@ -1,17 +1,17 @@
-import type { User } from '@/entities/user';
+import type { User } from '@/entities/user'
 
 export interface LoginDto {
-  email: string;
-  password: string;
+  email: string
+  password: string
 }
 
 export interface RegisterDto {
-  email: string;
-  password: string;
-  name: string;
+  email: string
+  password: string
+  name: string
 }
 
 export interface AuthResponse {
-  token: string;
-  user: User;
+  token: string
+  user: User
 }

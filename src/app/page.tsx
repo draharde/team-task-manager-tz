@@ -1,6 +1,6 @@
-import { redirect } from 'next/navigation';
-import { ROUTES } from '@/shared/config';
+import { redirect } from 'next/navigation'
+import { ROUTES } from '@/shared/config'
 
 export default function RootPage() {
-  redirect(ROUTES.boards);
+  redirect(ROUTES.boards)
 }

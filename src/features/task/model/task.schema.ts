@@ -1,12 +1,12 @@
-import { z } from 'zod';
+import { z } from 'zod'
+import { TASK_PRIORITIES, TASK_STATUSES } from '@/entities/task'
 import {
   TASK_DESCRIPTION_MAX_LENGTH,
   TASK_TAG_MAX_LENGTH,
   TASK_TAGS_MAX_COUNT,
   TASK_TITLE_MAX_LENGTH,
-} from '../config/task.constants';
-import { TASK_PRIORITIES, TASK_STATUSES } from '@/entities/task';
-import { parseTags } from '../lib/task.lib';
+} from '../config/task.constants'
+import { parseTags } from '../lib/task.lib'
 
 export const taskFormSchema = z.object({
   title: z
@@ -32,6 +32,6 @@ export const taskFormSchema = z.object({
       (value) => parseTags(value).every((tag) => tag.length <= TASK_TAG_MAX_LENGTH),
       `Тег — максимум ${TASK_TAG_MAX_LENGTH} символов`,
     ),
-});
+})
 
-export type TaskFormValues = z.infer<typeof taskFormSchema>;
+export type TaskFormValues = z.infer<typeof taskFormSchema>

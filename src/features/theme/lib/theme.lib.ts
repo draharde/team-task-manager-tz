@@ -1,5 +1,5 @@
-import { STORAGE_KEYS } from '@/shared/config';
-import { THEME_ATTRIBUTE } from '../config/theme.constants';
+import { STORAGE_KEYS } from '@/shared/config'
+import { THEME_ATTRIBUTE } from '../config/theme.constants'
 
 export const THEME_INIT_SCRIPT = `(function(){
   try {
@@ -8,4 +8,4 @@ export const THEME_INIT_SCRIPT = `(function(){
   } catch (error) {
     console.warn('THEME_ERROR', error);
   }
-})();`;
+})();`

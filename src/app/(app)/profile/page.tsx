@@ -1,3 +1,3 @@
-import { ProfilePage } from '@/views/profile';
+import { ProfilePage } from '@/views/profile'
 
-export default ProfilePage;
+export default ProfilePage

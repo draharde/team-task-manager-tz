@@ -1,16 +1,16 @@
-'use client';
+'use client'
 
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
-import { STORAGE_KEYS } from '@/shared/config';
-import type { User } from './user.types';
+import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
+import { STORAGE_KEYS } from '@/shared/config'
+import type { User } from './user.types'
 
 interface SessionState {
-  token: string | null;
-  user: User | null;
-  setSession: (token: string, user: User) => void;
-  setUser: (user: User) => void;
-  clear: VoidFunction;
+  token: string | null
+  user: User | null
+  setSession: (token: string, user: User) => void
+  setUser: (user: User) => void
+  clear: VoidFunction
 }
 
 export const useUserSessionStore = create<SessionState>()(
@@ -27,4 +27,4 @@ export const useUserSessionStore = create<SessionState>()(
       partialize: ({ token, user }) => ({ token, user }),
     },
   ),
-);
+)

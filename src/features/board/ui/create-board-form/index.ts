@@ -1,1 +1,1 @@
-export * from './create-board-form';
+export * from './create-board-form'

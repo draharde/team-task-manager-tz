@@ -5,13 +5,6 @@
   padding: 16px;
 }
 
-.header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-}
-
 .title {
   text-align: center;
 }

@@ -1,3 +1,3 @@
-import { LoginPage } from '@/views/login';
+import { LoginPage } from '@/views/login'
 
-export default LoginPage;
+export default LoginPage

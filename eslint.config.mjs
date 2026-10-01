@@ -1,8 +1,9 @@
-import { defineConfig, globalIgnores } from 'eslint/config';
-import nextVitals from 'eslint-config-next/core-web-vitals';
-import nextTs from 'eslint-config-next/typescript';
-import prettier from 'eslint-config-prettier/flat';
-import checkFile from 'eslint-plugin-check-file';
+import { defineConfig, globalIgnores } from 'eslint/config'
+import nextVitals from 'eslint-config-next/core-web-vitals'
+import nextTs from 'eslint-config-next/typescript'
+import prettier from 'eslint-config-prettier/flat'
+import checkFile from 'eslint-plugin-check-file'
+import cssModules from 'eslint-plugin-css-modules'
 
 const eslintConfig = defineConfig([
   ...nextVitals,
@@ -50,7 +51,38 @@ const eslintConfig = defineConfig([
     },
   },
 
-  prettier,
-]);
+  {
+    files: ['src/**/*.tsx'],
+    plugins: { 'css-modules': cssModules },
+    rules: {
+      'css-modules/no-unused-class': ['error', { camelCase: true }],
+      'css-modules/no-undef-class': ['error', { camelCase: true }],
+    },
+  },
 
-export default eslintConfig;
+  {
+    files: ['**/*.{ts,tsx}'],
+    settings: {
+      'import/resolver': 'node',
+    },
+    rules: {
+      'import/order': [
+        'error',
+        {
+          groups: ['builtin', 'external', 'internal', ['parent', 'sibling', 'index'], 'unknown'],
+          pathGroups: [
+            { pattern: '@/**', group: 'internal' },
+            { pattern: '*.css', patternOptions: { matchBase: true }, group: 'unknown' },
+          ],
+          pathGroupsExcludedImportTypes: ['builtin', 'external'],
+          'newlines-between': 'never',
+          alphabetize: { order: 'asc', caseInsensitive: true },
+        },
+      ],
+    },
+  },
+
+  prettier,
+])
+
+export default eslintConfig

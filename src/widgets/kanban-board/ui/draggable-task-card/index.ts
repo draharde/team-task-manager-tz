@@ -1,1 +1,1 @@
-export * from './draggable-task-card';
+export * from './draggable-task-card'

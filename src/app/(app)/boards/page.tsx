@@ -1,3 +1,3 @@
-import { BoardsPage } from '@/views/boards';
+import { BoardsPage } from '@/views/boards'
 
-export default BoardsPage;
+export default BoardsPage
