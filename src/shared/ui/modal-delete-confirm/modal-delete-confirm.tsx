@@ -1,15 +1,15 @@
-'use client';
+'use client'
 
-import { Button } from '../button';
-import { Modal } from '../modal/modal';
-import styles from './modal-delete-confirm.module.css';
+import { Button } from '../button'
+import { Modal } from '../modal/modal'
+import styles from './modal-delete-confirm.module.css'
 
 interface ModalDeleteConfirmProps {
-  isPending?: boolean;
-  isOpen: boolean;
-  title?: string;
-  onCancel: VoidFunction;
-  onConfirm: VoidFunction;
+  isPending?: boolean
+  isOpen: boolean
+  title?: string
+  onCancel: VoidFunction
+  onConfirm: VoidFunction
 }
 
 export function ModalDeleteConfirm({
@@ -35,5 +35,5 @@ export function ModalDeleteConfirm({
         </div>
       </div>
     </Modal>
-  );
+  )
 }

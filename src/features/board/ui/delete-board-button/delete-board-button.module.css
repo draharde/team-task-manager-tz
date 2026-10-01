@@ -3,14 +3,3 @@
   flex-direction: column;
   gap: 8px;
 }
-
-.question {
-  margin: 0;
-  font-size: 14px;
-}
-
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}

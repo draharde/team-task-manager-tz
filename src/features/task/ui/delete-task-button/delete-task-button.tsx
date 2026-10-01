@@ -1,30 +1,26 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import type { Task } from '@/entities/task';
-import { Button } from '@/shared/ui';
-import { useTaskDelete } from '../../api/task-delete.hook';
-import styles from './delete-task-button.module.css';
+import { useState } from 'react'
+import type { Task } from '@/entities/task'
+import { Button } from '@/shared/ui'
+import { useTaskDelete } from '../../api/task-delete.hook'
+import styles from './delete-task-button.module.css'
 
 interface DeleteTaskButtonProps {
-  task: Task;
-  onDeleted: () => void;
+  task: Task
+  onDeleted: () => void
 }
 
 export function DeleteTaskButton({ task, onDeleted }: DeleteTaskButtonProps) {
-  const [isConfirming, setIsConfirming] = useState(false);
-  const { mutate: deleteTask, isPending, error } = useTaskDelete(task.boardId);
-
-  //TODO: обработать ошибку!
-  // eslint-disable-next-line no-console
-  console.log(error);
+  const [isConfirming, setIsConfirming] = useState(false)
+  const { mutate: deleteTask, isPending } = useTaskDelete(task.boardId)
 
   if (!isConfirming) {
     return (
       <Button variant="secondary" onClick={() => setIsConfirming(true)}>
         Удалить задачу
       </Button>
-    );
+    )
   }
 
   return (
@@ -45,5 +41,5 @@ export function DeleteTaskButton({ task, onDeleted }: DeleteTaskButtonProps) {
         </Button>
       </div>
     </div>
-  );
+  )
 }

@@ -1,1 +1,1 @@
-export * from './delete-board-button';
+export * from './delete-board-button'

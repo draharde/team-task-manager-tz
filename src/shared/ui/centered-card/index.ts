@@ -1,1 +1,1 @@
-export * from './centered-card';
+export * from './centered-card'

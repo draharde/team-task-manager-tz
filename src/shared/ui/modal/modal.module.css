@@ -10,6 +10,7 @@
   backdrop-filter: blur(8px);
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition:
     opacity 0.3s,
     visibility 0.3s;
@@ -32,6 +33,7 @@
 .open {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 .open .modal {

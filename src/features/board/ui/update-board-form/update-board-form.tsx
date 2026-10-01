@@ -1,16 +1,16 @@
-'use client';
+'use client'
 
-import type { Board } from '@/entities/board';
-import { type BoardFormValues, boardSchema } from '../../model/board.schema';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useBoardUpdate } from '../../api/board-update.hook';
-import { useForm } from 'react-hook-form';
-import styles from './update-board-form.module.css';
-import { Button, FormItem, Input } from '@/shared/ui';
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import type { Board } from '@/entities/board'
+import { Button, FormItem, Input } from '@/shared/ui'
+import { useBoardUpdate } from '../../api/board-update.hook'
+import { type BoardFormValues, boardSchema } from '../../model/board.schema'
+import styles from './update-board-form.module.css'
 
 interface UpdateBoardFormProps {
-  board: Board;
-  onClose: VoidFunction;
+  board: Board
+  onClose: VoidFunction
 }
 
 export function UpdateBoardForm({ board, onClose }: UpdateBoardFormProps) {
@@ -21,13 +21,13 @@ export function UpdateBoardForm({ board, onClose }: UpdateBoardFormProps) {
   } = useForm<BoardFormValues>({
     resolver: zodResolver(boardSchema),
     values: { title: board.title },
-  });
-  const { mutate: updateBoard, isPending } = useBoardUpdate();
+  })
+  const { mutate: updateBoard, isPending } = useBoardUpdate()
 
   const onSubmit = ({ title }: BoardFormValues) => {
-    if (!isDirty) onClose();
-    updateBoard({ boardId: board.id, title }, { onSuccess: onClose });
-  };
+    if (!isDirty) onClose()
+    updateBoard({ boardId: board.id, title }, { onSuccess: onClose })
+  }
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -45,5 +45,5 @@ export function UpdateBoardForm({ board, onClose }: UpdateBoardFormProps) {
         </Button>
       </div>
     </form>
-  );
+  )
 }

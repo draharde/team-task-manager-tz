@@ -1,1 +1,1 @@
-export * from './task-filter-panel';
+export * from './task-filter-panel'

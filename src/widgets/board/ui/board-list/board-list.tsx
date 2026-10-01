@@ -1,17 +1,18 @@
-'use client';
+'use client'
 
-import { BoardCard, useBoardGet } from '@/entities/board';
-import { DeleteBoardButton, UpdateBoardForm } from '@/features/board';
-import { Button, Empty, Loader } from '@/shared/ui';
-import { useState } from 'react';
-import styles from './board-list.module.css';
+import { useState } from 'react'
+import { BoardCard, useBoardGet } from '@/entities/board'
+import { DeleteBoardButton, UpdateBoardForm } from '@/features/board'
+import { Button, Empty, Loader } from '@/shared/ui'
+import styles from './board-list.module.css'
 
 export function BoardList() {
-  const { data: boards, isPending } = useBoardGet();
-  const [editBoardId, setEditBoardId] = useState<string | null>(null);
+  const { data: boards, isPending, isError, error } = useBoardGet()
+  const [editBoardId, setEditBoardId] = useState<string | null>(null)
 
-  if (isPending) return <Loader />;
-  if (!boards?.length) return <Empty />;
+  if (isPending) return <Loader />
+  if (isError) return <p>{error.message}</p>
+  if (!boards?.length) return <Empty />
 
   return (
     <div className={styles.list}>
@@ -38,5 +39,5 @@ export function BoardList() {
         </li>
       ))}
     </div>
-  );
+  )
 }

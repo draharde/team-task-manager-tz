@@ -1,8 +1,8 @@
-import { QueryClient } from '@tanstack/react-query';
-import { HTTP_STATUS } from './http-status';
+import { QueryClient } from '@tanstack/react-query'
+import { HTTP_STATUS } from './http-status'
 
-const STALE_TIME_MS = 30_000;
-const MAX_RETRIES = 2;
+const STALE_TIME_MS = 30_000
+const MAX_RETRIES = 2
 
 export function createQueryClient() {
   return new QueryClient({
@@ -14,5 +14,5 @@ export function createQueryClient() {
             HTTP_STATUS.INTERNAL_SERVER_ERROR && failureCount < MAX_RETRIES,
       },
     },
-  });
+  })
 }

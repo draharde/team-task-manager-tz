@@ -1,26 +1,26 @@
-'use client';
+'use client'
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
 import {
   TASK_PRIORITIES,
   TASK_PRIORITY_LABELS,
   TASK_STATUSES,
   TASK_STATUS_LABELS,
-} from '@/entities/task';
-import { useUserList } from '@/entities/user';
-import { Button, FormItem, Input, Select, Textarea } from '@/shared/ui';
-import { TASK_TAGS_MAX_COUNT } from '../../config/task.constants';
-import { taskFormSchema, type TaskFormValues } from '../../model/task.schema';
-import styles from './task-form.module.css';
+} from '@/entities/task'
+import { useUserList } from '@/entities/user'
+import { Button, FormItem, Input, Select, Textarea } from '@/shared/ui'
+import { TASK_TAGS_MAX_COUNT } from '../../config/task.constants'
+import { taskFormSchema, type TaskFormValues } from '../../model/task.schema'
+import styles from './task-form.module.css'
 
 interface TaskFormProps {
-  defaultValues: TaskFormValues;
-  submitLabel: string;
-  isPending: boolean;
-  error?: string;
-  onSubmit: (values: TaskFormValues) => void;
-  onCancel: () => void;
+  defaultValues: TaskFormValues
+  submitLabel: string
+  isPending: boolean
+  error?: string
+  onSubmit: (values: TaskFormValues) => void
+  onCancel: () => void
 }
 
 export function TaskForm({
@@ -37,10 +37,10 @@ export function TaskForm({
   } = useForm<TaskFormValues>({
     resolver: zodResolver(taskFormSchema),
     defaultValues,
-  });
-  const { data: users = [] } = useUserList();
+  })
+  const { data: users = [] } = useUserList()
 
-  const submit = (values: TaskFormValues) => (isDirty ? onSubmit(values) : onCancel());
+  const submit = (values: TaskFormValues) => (isDirty ? onSubmit(values) : onCancel())
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(submit)} noValidate>
@@ -57,7 +57,7 @@ export function TaskForm({
           {(control) => (
             <Select {...control} {...register('status')}>
               {TASK_STATUSES.map((status) => (
-                <option key={status} value={status}>
+                <option key={`task-form-status-key-${status}`} value={status}>
                   {TASK_STATUS_LABELS[status]}
                 </option>
               ))}
@@ -69,7 +69,7 @@ export function TaskForm({
           {(control) => (
             <Select {...control} {...register('priority')}>
               {TASK_PRIORITIES.map((priority) => (
-                <option key={priority} value={priority}>
+                <option key={`task-form-priority-key-${priority}`} value={priority}>
                   {TASK_PRIORITY_LABELS[priority]}
                 </option>
               ))}
@@ -88,7 +88,7 @@ export function TaskForm({
             <Select {...control} {...register('assigneeId')}>
               <option value="">Не назначен</option>
               {users.map((user) => (
-                <option key={user.id} value={user.id}>
+                <option key={`task-form-user-key-${user.id}`} value={user.id}>
                   {user.name}
                 </option>
               ))}
@@ -114,5 +114,5 @@ export function TaskForm({
         </Button>
       </div>
     </form>
-  );
+  )
 }

@@ -1,5 +1,12 @@
-import type { NextConfig } from 'next';
+import type { NextConfig } from 'next'
 
-const nextConfig: NextConfig = {/* config options here */};
+const nextConfig: NextConfig = {
+  transpilePackages: [
+    '@dnd-kit/core',
+    '@hookform/resolvers',
+    '@tanstack/react-query',
+    '@tanstack/react-query-devtools',
+  ],
+}
 
-export default nextConfig;
+export default nextConfig

@@ -5,4 +5,4 @@ export const ROUTES = {
   boards: '/boards',
   board: (boardId: string) => `/boards/${boardId}`,
   profile: '/profile',
-} as const;
+} as const
